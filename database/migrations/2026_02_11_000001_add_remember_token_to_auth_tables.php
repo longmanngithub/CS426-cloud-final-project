@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->rememberToken();
+        });
+
+        Schema::table('organizers', function (Blueprint $table) {
+            $table->rememberToken();
+        });
+
+        Schema::table('user_admin', function (Blueprint $table) {
+            $table->rememberToken();
+        });
+    }
+
+    public function down()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('remember_token');
+        });
+
+        Schema::table('organizers', function (Blueprint $table) {
+            $table->dropColumn('remember_token');
+        });
+
+        Schema::table('user_admin', function (Blueprint $table) {
+            $table->dropColumn('remember_token');
+        });
+    }
+};
