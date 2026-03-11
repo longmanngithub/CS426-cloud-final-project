@@ -1,36 +1,18 @@
 <?php
 
+// This migration has been consolidated into 2024_01_01_000001_create_all_tables.php
+
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_banned')->default(false)->after('date_of_birth');
-        });
-
-        Schema::table('organizers', function (Blueprint $table) {
-            $table->boolean('is_banned')->default(false)->after('business_reg_no');
-        });
+        // is_banned columns are now in the base create_all_tables migration
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_banned');
-        });
-
-        Schema::table('organizers', function (Blueprint $table) {
-            $table->dropColumn('is_banned');
-        });
+        // no-op
     }
 };

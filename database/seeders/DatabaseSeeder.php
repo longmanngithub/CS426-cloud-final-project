@@ -9,8 +9,8 @@ use App\Models\User;
 use App\Models\Organizer;
 use App\Models\Category;
 use App\Models\Event;
-use App\Models\FavoriteEvent;
-use App\Models\UserAdmin;
+use App\Models\FavEvent;
+use App\Models\AdminUser;
 
 class DatabaseSeeder extends Seeder
 {
@@ -83,17 +83,17 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Seed favorite events
-        FavoriteEvent::create([
+        FavEvent::create([
             'user_id' => $user->user_id,
             'event_id' => $event1->event_id,
         ]);
-        FavoriteEvent::create([
+        FavEvent::create([
             'user_id' => $user->user_id,
             'event_id' => $event2->event_id,
         ]);
 
         // Seed user admin
-        UserAdmin::create([
+        AdminUser::create([
             'email' => 'admin@example.com',
             'password' => Hash::make('adminpass'),
             'first_name' => 'Admin',

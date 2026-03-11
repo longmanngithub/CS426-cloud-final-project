@@ -1,38 +1,18 @@
 <?php
 
+// This migration has been consolidated into 2024_01_01_000001_create_all_tables.php
+
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->rememberToken();
-        });
-
-        Schema::table('organizers', function (Blueprint $table) {
-            $table->rememberToken();
-        });
-
-        Schema::table('user_admin', function (Blueprint $table) {
-            $table->rememberToken();
-        });
+        // remember_token columns are now in the base create_all_tables migration
     }
 
-    public function down()
+    public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('remember_token');
-        });
-
-        Schema::table('organizers', function (Blueprint $table) {
-            $table->dropColumn('remember_token');
-        });
-
-        Schema::table('user_admin', function (Blueprint $table) {
-            $table->dropColumn('remember_token');
-        });
+        // no-op
     }
 };

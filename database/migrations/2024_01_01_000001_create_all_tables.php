@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('last_name', 200);
             $table->string('phone_number', 100)->nullable();
             $table->date('date_of_birth');
+            $table->boolean('is_banned')->default(false);
+            $table->rememberToken();
             $table->timestamps();
         });
 
@@ -33,6 +35,8 @@ return new class extends Migration
             $table->string('company_name', 200)->nullable();
             $table->string('website', 200)->nullable();
             $table->string('business_reg_no', 100)->nullable();
+            $table->boolean('is_banned')->default(false);
+            $table->rememberToken();
             $table->timestamps();
         });
 
@@ -49,7 +53,7 @@ return new class extends Migration
             $table->unsignedBigInteger('organizer_id');
             $table->string('title', 200);
             $table->text('description')->nullable();
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->time('start_time');
@@ -59,6 +63,7 @@ return new class extends Migration
             $table->string('link', 200)->nullable();
             $table->string('picture_url', 200)->nullable();
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('organizer_id')->references('organizer_id')->on('organizers')->onDelete('cascade');
             $table->foreign('category_id')->references('category_id')->on('categories')->onDelete('set null');
         });
@@ -82,6 +87,7 @@ return new class extends Migration
             $table->string('last_name', 200);
             $table->string('phone_number', 100)->nullable();
             $table->date('date_of_birth');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
